@@ -1,0 +1,230 @@
+/* ── Layout ── */
+.layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+  z-index: 1;
+}
+
+.header {
+  text-align: center;
+  color: white;
+}
+
+.header h1 {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 800;
+  text-shadow: 0 0 20px rgba(255, 107, 157, 0.8);
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.header p {
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.footer {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* ── Stage ── */
+.cat-stage {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 280px;
+}
+
+.cat-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cat-image {
+  width: clamp(160px, 40vw, 220px);
+  height: auto;
+  filter: drop-shadow(0 8px 20px rgba(255, 107, 157, 0.4));
+  cursor: pointer;
+  user-select: none;
+  transform-origin: center bottom;
+}
+
+/* Disco ring around cat */
+.disco-ring {
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  background: linear-gradient(135deg, #FF6B9D, #FFD700, #6C63FF, #FF6B9D) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  animation: spin 2s linear infinite;
+  opacity: 0.7;
+}
+
+/* Music notes */
+.music-note {
+  position: absolute;
+  font-size: 1.8rem;
+  bottom: 80%;
+  animation: floatNote 1.5s ease-out infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ── Controls ── */
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.btn-play {
+  padding: 0.9rem 2.5rem;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  font-weight: 700;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #FF6B9D, #6C63FF);
+  color: white;
+  letter-spacing: 1px;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 15px rgba(255, 107, 157, 0.4);
+  min-width: 180px;
+}
+
+.btn-play:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 25px rgba(255, 107, 157, 0.6);
+}
+
+.btn-play:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-play.playing {
+  animation: buttonPulse 1.5s ease-in-out infinite;
+  background: linear-gradient(135deg, #6C63FF, #FF6B9D);
+}
+
+.btn-next {
+  padding: 0.6rem 1.6rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  transition: background 0.2s, transform 0.15s, opacity 0.2s;
+  backdrop-filter: blur(4px);
+}
+
+.btn-next:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.btn-next:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* Move indicator dots */
+.move-indicators {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.move-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  transition: background 0.3s, transform 0.3s;
+}
+
+.move-dot.active {
+  background: #FF6B9D;
+  transform: scale(1.4);
+  box-shadow: 0 0 8px rgba(255, 107, 157, 0.8);
+}
+
+.move-label {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  min-height: 1.5rem;
+}
+
+/* ── Star field ── */
+.starfield {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: white;
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .layout {
+    gap: 1.5rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .cat-stage {
+    min-height: 220px;
+  }
+
+  .music-note {
+    font-size: 1.4rem;
+  }
+
+  .btn-play {
+    padding: 0.8rem 2rem;
+    min-width: 160px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .layout {
+    max-width: 700px;
+  }
+
+  .cat-image {
+    width: 260px;
+  }
+}

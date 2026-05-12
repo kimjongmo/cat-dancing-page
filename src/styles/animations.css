@@ -1,0 +1,89 @@
+/* Dancing animations */
+@keyframes dance {
+  0%   { transform: translateY(0) rotate(0deg) scale(1); }
+  10%  { transform: translateY(-20px) rotate(-8deg) scale(1.05); }
+  20%  { transform: translateY(-10px) rotate(8deg) scale(1.08); }
+  30%  { transform: translateY(-25px) rotate(-5deg) scale(1.1); }
+  40%  { transform: translateY(-5px) rotate(5deg) scale(1.05); }
+  50%  { transform: translateY(-30px) rotate(0deg) scale(1.12); }
+  60%  { transform: translateY(-10px) rotate(-8deg) scale(1.05); }
+  70%  { transform: translateY(-20px) rotate(8deg) scale(1.08); }
+  80%  { transform: translateY(-5px) rotate(-5deg) scale(1.05); }
+  90%  { transform: translateY(-15px) rotate(5deg) scale(1.02); }
+  100% { transform: translateY(0) rotate(0deg) scale(1); }
+}
+
+@keyframes spin {
+  0%   { transform: rotate(0deg) scale(1); }
+  25%  { transform: rotate(90deg) scale(1.1); }
+  50%  { transform: rotate(180deg) scale(1.15); }
+  75%  { transform: rotate(270deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0) scaleY(1); }
+  30%       { transform: translateY(-40px) scaleY(1.05); }
+  50%       { transform: translateY(-50px) scaleY(1); }
+  70%       { transform: translateY(-20px) scaleY(0.95); }
+  90%       { transform: translateY(-5px) scaleY(1.02); }
+}
+
+@keyframes shimmy {
+  0%   { transform: translateX(0) rotate(0deg); }
+  15%  { transform: translateX(-15px) rotate(-5deg); }
+  30%  { transform: translateX(15px) rotate(5deg); }
+  45%  { transform: translateX(-10px) rotate(-3deg); }
+  60%  { transform: translateX(10px) rotate(3deg); }
+  75%  { transform: translateX(-5px) rotate(-2deg); }
+  90%  { transform: translateX(5px) rotate(2deg); }
+  100% { transform: translateX(0) rotate(0deg); }
+}
+
+@keyframes moonwalk {
+  0%   { transform: translateX(0) skewX(0deg); }
+  20%  { transform: translateX(-30px) skewX(-5deg); }
+  40%  { transform: translateX(-60px) skewX(5deg); }
+  60%  { transform: translateX(-30px) skewX(-3deg); }
+  80%  { transform: translateX(0) skewX(3deg); }
+  100% { transform: translateX(0) skewX(0deg); }
+}
+
+/* Note floating animation */
+@keyframes floatNote {
+  0%   { transform: translateY(0) translateX(0) scale(1); opacity: 1; }
+  50%  { transform: translateY(-60px) translateX(20px) scale(1.2); opacity: 0.7; }
+  100% { transform: translateY(-120px) translateX(-10px) scale(0.8); opacity: 0; }
+}
+
+/* Background pulse */
+@keyframes bgPulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50%       { opacity: 0.6; transform: scale(1.05); }
+}
+
+/* Star twinkle */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50%       { opacity: 1; transform: scale(1.2); }
+}
+
+/* Button pulse */
+@keyframes buttonPulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(255, 107, 157, 0.4); }
+  50%       { box-shadow: 0 0 25px rgba(255, 107, 157, 0.8), 0 0 40px rgba(255, 107, 157, 0.3); }
+}
+
+/* Idle wiggle */
+@keyframes idle {
+  0%, 100% { transform: rotate(0deg); }
+  25%       { transform: rotate(-3deg); }
+  75%       { transform: rotate(3deg); }
+}
+
+.animation-dance    { animation: dance 1.2s ease-in-out infinite; will-change: transform; }
+.animation-spin     { animation: spin 1s linear infinite; will-change: transform; }
+.animation-bounce   { animation: bounce 0.8s ease-in-out infinite; will-change: transform; }
+.animation-shimmy   { animation: shimmy 0.9s ease-in-out infinite; will-change: transform; }
+.animation-moonwalk { animation: moonwalk 2s ease-in-out infinite; will-change: transform; }
+.animation-idle     { animation: idle 2s ease-in-out infinite; will-change: transform; }
